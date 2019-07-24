@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>
+            Users Page
+        </title>
+        <script type="text/javascript">
+        const getProd = ()=>{
+            const _url = 'http://localhost:1234/product';
+            fetch(_url)
+            .then(res=>res.json())
+            .then(product=>{
+                createTable(product);
+            })
+        }
+        const createTable = (data)=>{
+            let _nrows = '';
+            let _crows = '';
+            data.product.forEach((p) => {
+                _nrows += `<option>${p.name}</option>`;
+                _crows += `<option>${p.name}</option>`;          
+             
+                        
+            });
+            const _searchCategory = `<select> ${_crows} </select>`;
+            const _searchName = `<select> ${_nrows} </select>`;
+            document.getElementById('searchByCategory').innerHTML = _searchCategory;
+            document.getElementById('searchByName').innerHTML = _searchName;
+        }
+        /*const add = (name,price) =>{
+            let quantity = 1;
+            let c_url = 'http://localhost:1269/cart/';
+            fetch(c_url + '/add',{
+                method : 'POST',
+                headers : {
+                    'content-type' : 'application/json'
+                },
+                body : JSON.stringify({
+                    name : name,
+                    price : price,
+                    quantity : quantity
+                })
+            })
+        }*/
+        </script>
+    </head>
+    <body onload="getProd()">
+    <div id="searchByCategory">
+    </div>
+    <div id="searchByName">
+        </div>
+    </body>
+</html>                                                   
+            

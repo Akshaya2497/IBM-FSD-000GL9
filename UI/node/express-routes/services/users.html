@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <title>
+            Users Page
+        </title>
+        <script type="text/javascript">
+        const getUsers = ()=>{
+            const _url = 'http://localhost:1269/users';
+            fetch(_url,{
+                headers:{
+                    'username' : 'tech',
+                    'password' : 'tech'
+                }
+            })
+            .then(res=>res.json())
+            .then(users=>{
+               
+                createTable(users);
+            })
+        }
+        
+        const save = ()=>{
+            const userUrl = 'http://localhost:1269/users/';
+            const projectUrl = 'http://localhost:1269/projects/';
+            // api to get the next user id
+            fetch(userUrl+'/nextId',{
+                headers:{
+                    'username' : 'tech',
+                    'password' : 'tech',
+                    'content-type': 'application/json'
+            }})
+            .then(res=>res.json())
+            .then(res=>{
+                
+                const uname = document.getElementById('name').value;
+                const pname = document.getElementById('project').value;
+                //continue from here
+                fetch(baseUrl+'/add',{
+                    method : 'POST',
+                    headers:{
+                        'username' : 'tech',
+                        'password' : 'tech',
+                        'content-type': 'application/json'
+                    },
+                    body:JSON.stringify({
+                            id: id,
+                            name : name,
+                            email : email
+                        })
+                })
+                .then(response=>response.json())
+                .then(data=>{
+                    createTable(data);
+                });
+            })
+        }
+       
+        const createTable = (data)=>{
+            let rows = '';
+            data.users.forEach(u => {
+                rows += `<tr>
+                            <td>${u.id}</td>
+                            <td>${u.name}</td>
+                            <td>${u.email}</td>
+                        </tr>`
+            });
+            const _table = `<table>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                </tr>
+                                ${rows}
+                            </table>`
+            document.getElementById('users').innerHTML = _table;
+        }
+        </script>
+    </head>
+    <body>
+        <select>
+            <option id='name'>John</option>
+            <option id='name'>Bob</option>
+            <option id='name'>Adam</option>
+            <option id='name'>Prince</option>
+            <option id='name'>kabir</option>
+            <option id='name'>Arjun</option>
+        </select>
+        <select>
+                <option id='project'>AT&T</option>
+                <option id='project'>Google</option>
+                <option id='project'>Facebook</option>
+        </select>
+        <input type="button" value="save" onclick="save()">
+    
+
+    <div id="users">
+
+    </div>
+    </body>
+</html>

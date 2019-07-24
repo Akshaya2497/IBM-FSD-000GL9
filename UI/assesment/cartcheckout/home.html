@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Home Page</title>
+        <script>
+        const login = ()=>{
+            let emailId=document.getElementsByName('email');
+            let pass=document.getElementsByName('pass');
+            const _url = 'http://localhost:1234/login/emaiId/pass';
+            fetch(_url)
+            .then(res=>res.json())
+            .then((res){
+                if(res!=null)
+                document.location('cart.html')
+            })
+        }
+        const register = ()=>{
+            const _url = 'http://localhost:1234/register';
+            fetch(_url)
+            .then(res=>res.json())
+            .then(products=>{
+               console.log('html');
+            })
+        }
+        </script>
+    </head>
+    <body>
+        <fieldset>
+            <legend>Log in</legend>
+            Email id <input type="text" name="email"></br>
+            password <input type="password" name="pass">
+            <input type="submit" onclick="login()">
+        </fieldset>
+        <fieldset>
+            <legend>Register</legend>
+            Name <input type = "text" name="name"></br>
+            Email <input type = "email" name="email"></br>
+            Password <input type = "password" name="pass"></br>
+            <input type="submit" onclick="register()"></br>
+        </fieldset>
+    </body>
+</html>

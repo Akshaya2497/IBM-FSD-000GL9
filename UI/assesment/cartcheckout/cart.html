@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title> Cart </title>
+    </head>
+    <script type="text/javascript" src="additem.js"></script>
+    
+    <script>
+    const loadApp = ()=>{
+           
+            const _url = 'http://localhost:1234/searchItem/';
+            fetch(_url)
+            .then(res=>res.json())
+            .then((products)=>{
+                searchByCategory(products);
+                searchByName(products);
+            })
+            
+            
+    }
+   
+    const searchByCategory=(product)=>{
+        let rows='<select>';
+        products.forEach((prod)=>{
+            rows+=`<option>${prod.category}</option>`;
+        });
+        rows+='</select>';
+        document.getElementById('searchByName').innerHTML=rows;
+    }
+    const searchByName=(product)=>{
+        let rows='<select>';
+        products.forEach((prod)=>{
+            rows+=`<option>${prod.name}</option>`;
+        });
+        rows+='</select>';
+        document.getElementById('searchByName').innerHTML=rows;
+        
+    }
+    </script>
+    <body onload='loadApp()'>
+        Search by Catgory <div id="searchByCategory"> 
+           <select id="sCategory">
+               <option>Mobile Case</option>
+               <option>Entertainment</option>
+               <option>Tupperware </option>
+           </select>
+       </div></br>
+
+       Search by Name <div id="searchByName">
+            <select id="sName">
+                    <option>Google pixel</option>
+                    <option>Fire Stick</option>
+                    <option>Bottle</option>
+                </select>
+       </div>
+       
+       <input type="button" onclick="add()" value="Add Item">
+        <div id="table"></div> 
+
+    </body>
+</html>
