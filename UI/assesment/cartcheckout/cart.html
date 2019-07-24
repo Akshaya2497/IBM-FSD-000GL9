@@ -7,26 +7,30 @@
     <script>
     const loadApp = ()=>{
            
-            const _url = 'http://localhost:1234/searchItem/';
+        console.log("load");
+            const _url = 'http://localhost:1234/products';
             fetch(_url)
             .then(res=>res.json())
-            .then((products)=>{
-                searchByCategory(products);
-                searchByName(products);
+            .then((data)=>{
+                console.log(data);
+                searchByCategory(data);
+                searchByName(data);
             })
+            
             
             
     }
    
-    const searchByCategory=(product)=>{
-        let rows='<select>';
-        products.forEach((prod)=>{
+    const searchByCategory=(data)=>{
+        let rows='';
+        data.products.forEach((prod)=>{
+            console.log(prod.category);
             rows+=`<option>${prod.category}</option>`;
         });
-        rows+='</select>';
+        
         document.getElementById('searchByName').innerHTML=rows;
     }
-    const searchByName=(product)=>{
+    const searchByName=(data)=>{
         let rows='<select>';
         products.forEach((prod)=>{
             rows+=`<option>${prod.name}</option>`;
@@ -37,23 +41,28 @@
     }
     </script>
     <body onload='loadApp()'>
-        Search by Catgory <div id="searchByCategory"> 
+        Search by Catgory   
            <select id="sCategory">
                <option>Mobile Case</option>
                <option>Entertainment</option>
                <option>Tupperware </option>
            </select>
-       </div></br>
+       </br>
 
-       Search by Name <div id="searchByName">
+       Search by Name 
             <select id="sName">
                     <option>Google pixel</option>
                     <option>Fire Stick</option>
                     <option>Bottle</option>
                 </select>
-       </div>
        
+       <br/>
        <input type="button" onclick="add()" value="Add Item">
+       <br/>
+       <div >
+           <select id="searchByCategory"></select>
+       </div>
+       <div id="searchByName"></div>
         <div id="table"></div> 
 
     </body>

@@ -1,24 +1,21 @@
-const products = [
+const product = [
     {
-        id : 1,
-        category : 'Mobile Case',
-        name : 'Google pixel',
-        price : 200,
-        availability : 10
+        product_id : 1,
+        product_name : "Pen",
+        product_price : 25,
+        product_quantity : 10
     },
     {
-        id : 2,
-        category : 'Entertainment',
-        name : 'Fire Stick',
-        price : 2000,
-        availability : 5
+        product_id : 2,
+        product_name : "Eraser",
+        product_price : 10,
+        product_quantity : 20
     },
     {
-        id : 3,
-        name : 'Tupper Ware Bottle',
-        price : 80,
-        availability : 15
+        product_id : 3,
+        product_name : "Scale",
+        product_price : 15,
+        product_quantity : 15
     }
-];
-module.exports.products=products
-
+]
+module.exports.product = product;
