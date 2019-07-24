@@ -2,46 +2,54 @@
     <head>
         <title> Cart </title>
     </head>
-    <script type="text/javascript" src="additem.js"></script>
+     <script type="text/javascript" src="additem.js"></script> 
     
     <script>
     const loadApp = ()=>{
            
-        console.log("load");
-            const _url = 'http://localhost:1234/products';
+       console.log("load");
+            const _url = 'http://localhost:4455/products';
             fetch(_url)
             .then(res=>res.json())
-            .then((data)=>{
-                console.log(data);
-                searchByCategory(data);
-                searchByName(data);
-            })
-            
-            
-            
+            .then(data=>{
+                //console.log(data);
+                //searchByCategory(data);
+                //searchByName(data);
+            })       
     }
-   
-    const searchByCategory=(data)=>{
-        let rows='';
+    const add = () =>{
+        const _url = 'http://localhost:4455/add';
+            fetch(_url)
+            .then(res=>res.json())
+            .then(data=>{
+                //console.log(data);
+                //searchByCategory(data);
+                //searchByName(data);
+            }) 
+
+    }
+    /*const searchByCategory=(data)=>{
+        let rows='<select>';
+        console.log(data);
         data.products.forEach((prod)=>{
-            console.log(prod.category);
-            rows+=`<option>${prod.category}</option>`;
+            console.log(prod[0]);
+            rows+=`<option>${prod[0].category}</option>`;
         });
-        
-        document.getElementById('searchByName').innerHTML=rows;
+        rows+=`</select>`;
+        document.getElementById('searchByCat').innerHTML=rows;
     }
     const searchByName=(data)=>{
         let rows='<select>';
-        products.forEach((prod)=>{
+        data.products.forEach((prod)=>{
             rows+=`<option>${prod.name}</option>`;
         });
         rows+='</select>';
         document.getElementById('searchByName').innerHTML=rows;
         
-    }
+    }*/
     </script>
     <body onload='loadApp()'>
-        Search by Catgory   
+         Search by Catgory    
            <select id="sCategory">
                <option>Mobile Case</option>
                <option>Entertainment</option>
@@ -57,12 +65,12 @@
                 </select>
        
        <br/>
-       <input type="button" onclick="add()" value="Add Item">
+       
        <br/>
-       <div >
-           <select id="searchByCategory"></select>
+       <!--<div id="searchByCat" >
        </div>
-       <div id="searchByName"></div>
+       <div id="searchByName"></div>-->
+       <input type="button" onclick="add()" value="Add Item">
         <div id="table"></div> 
 
     </body>
