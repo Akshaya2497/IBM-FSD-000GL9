@@ -20,7 +20,7 @@ const products = [
         price : 80,
         availability : 15
     }
-]
+];
 module.exports={
     products
 }

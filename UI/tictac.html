@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <title>Tic-Tac-Toe</title>
+        <script type="text/javascript">
+            let val ='';
+            let pId;
+            const play=(id)=>{
+                document.getElementById(id).value=val;
+                console.log(id);
+                let corner=checkCorner(val,id);
+                if(corner){
+                    alert("You have won the game!!");
+                    exit(0);
+                }
+                let diagonal=checkDiagonal(val,id);
+            }
+            const choose=(id)=>{
+                console.log(id);
+                    if(id == 'p1'){
+                        val='x';  
+                    }                  
+                    else{
+                        val = 'o';
+                    }
+            }
+            const checkCorner=(val,id)=>{
+                _index=parseInt(id);
+                if(_index%2!=0 && _index != 5){
+                    let c=0;
+                    if(_index == 1 || _index == 7){
+                        for(let i=1; i<3;i++){
+                            if(!document.getElementById(_index+i).value != val)
+                            break;
+                            c++;
+                        }
+                        if(c==2){
+                        alert("Winner");
+                        exit(0);
+                        }
+                    }
+                    if(_index == 3 || _index == 9){
+                        for(let i=1; i<3;i++){
+                            if(document.getElementById(_index-i).value != val)
+                            break;
+                            c++;
+                        }
+                        if(c==2){
+                        alert("Winner");
+                        exit(0);
+                        }
+                    }
+                    
+                }
+
+            }
+            if(_index == 1 || _index == 3){
+                        for(let i=2; i<6 ;i+=2){
+                            if(document.getElementById(_index-i).value != val)
+                            break;
+                            c++;
+                        }
+                        if(c==2){
+                        alert("Winner");
+                        exit(0);
+                        }
+                    }
+        </script>
+    </head>
+    <body>
+        <h3>Welcome to Tic-Tac-Toe</h3>
+        <div id="board">
+            <table>
+                <tr>
+                    <td><input type="button" id='1' onclick="play(id)"></td>
+                    <td><input type="button" id='2' onclick="play(id)"></td>
+                    <td><input type="button" id='3' onclick="play(id)"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" id='4'onclick="play(id)"></td>
+                    <td><input type="button" id='5'onclick="play(id)"></td>
+                    <td><input type="button" id='6'onclick="play(id)"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" id='7' onclick="play(id)"></td>
+                    <td><input type="button" id='8' onclick="play(id)"></td>
+                    <td><input type="button" id='9' onclick="play(id)"></td>
+                </tr>
+            </table>        
+            <input type="button" value="player1" id='p1' onclick="choose(id)"/> 
+            <input type="button" value="player2" id='p2' onclick="choose(id)"/> 
+       
+       
+        </div> 
+    </body>
+</html>

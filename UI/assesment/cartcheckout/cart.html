@@ -2,7 +2,7 @@
     <head>
         <title> Cart </title>
     </head>
-     <script type="text/javascript" src="additem.js"></script> 
+     <!-- <script type="text/javascript" src="additem.js"></script>  -->
     
     <script>
     const loadApp = ()=>{
@@ -12,9 +12,9 @@
             fetch(_url)
             .then(res=>res.json())
             .then(data=>{
-                //console.log(data);
-                //searchByCategory(data);
-                //searchByName(data);
+                console.log(data);
+                searchByCategory(data);
+                searchByName(data);
             })       
     }
     const add = () =>{
@@ -22,17 +22,17 @@
             fetch(_url)
             .then(res=>res.json())
             .then(data=>{
-                //console.log(data);
-                //searchByCategory(data);
-                //searchByName(data);
+                console.log(data);
+                searchByCategory(data);
+                searchByName(data);
             }) 
 
     }
-    /*const searchByCategory=(data)=>{
+    const searchByCategory=(data)=>{
         let rows='<select>';
-        console.log(data);
-        data.products.forEach((prod)=>{
-            console.log(prod[0]);
+        
+        data.forEach((prod)=>{
+            console.log("product");
             rows+=`<option>${prod[0].category}</option>`;
         });
         rows+=`</select>`;
@@ -40,15 +40,15 @@
     }
     const searchByName=(data)=>{
         let rows='<select>';
-        data.products.forEach((prod)=>{
+        Array.from(data).forEach((prod)=>{
             rows+=`<option>${prod.name}</option>`;
         });
         rows+='</select>';
         document.getElementById('searchByName').innerHTML=rows;
         
-    }*/
+    }
     </script>
-    <body onload='loadApp()'>
+    <body onload="loadApp()">
          Search by Catgory    
            <select id="sCategory">
                <option>Mobile Case</option>
@@ -67,9 +67,9 @@
        <br/>
        
        <br/>
-       <!--<div id="searchByCat" >
+       <div id="searchByCat" >
        </div>
-       <div id="searchByName"></div>-->
+       <div id="searchByName"></div>
        <input type="button" onclick="add()" value="Add Item">
         <div id="table"></div> 
 

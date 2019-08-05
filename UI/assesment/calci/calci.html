@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Calculator</title>
+        <script type="text/javascript" src="calciscript.js"> </script>
+        <style>
+            input[type="button"]{
+                height: 60px;
+                width: 60px;
+            }
+        </style>
+        
+    </head>
+    <body>
+        Name : <input type="text" placeholder="type your name" id="name"><br/>
+        Password : <input type="password" id="pass" placeholder="type your password"><br/>
+        <input type="button" value="Log In" onclick="login()"><br/><br/>
+        <table>
+            
+               <tr><input type="text" id="input"></tr><br/>
+                <tr><td>
+                <input type="button" value="0" onclick="appendNum(0)" >
+                <input type="button" value="1" onclick="appendNum(1)" >
+                <input type="button" value="2" onclick="appendNum(2)" ></td></tr>
+                <tr> <td><input type="button" value="3" onclick="appendNum(3)" >
+                <input type="button" value="4" onclick="appendNum(4)" >
+                <input type="button" value="5" onclick="appendNum(5)" >
+                <input type="button" value="6" onclick="appendNum(6)" ></td></tr>
+             <tr><td>   <input type="button" value="7" onclick="appendNum(7)" >
+                <input type="button" value="8" onclick="appendNum(8)" >
+                <input type="button" value="9" onclick="appendNum(9)" >
+            </td></tr><br/></div>
+            <tr>
+                    <input type="button" value="add" onclick= "savenum('+')">
+                    <input type="button" value="sub" onclick= "savenum('-')">
+                    <input type="button" value="sqrt" onclick= "savenum('sqrt')">
+                    <input type="button" value="clear" onclick="clear()">
+                    <input type="button" value="equals" onclick= "equals()">
+            </tr>
+
+        </table>
+    </body>
+</html>
