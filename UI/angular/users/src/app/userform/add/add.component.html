@@ -1,0 +1,10 @@
+<p>add works!</p>
+<fieldset><legend>Register</legend>
+    <form #regfrm="ngForm" (submit)="_register(regfrm.value)">
+        <input type="text" placeholder="name" name="email" ngModel>
+        <input type="password" placeholder="password" name="pass" ngModel>
+        <input type="submit" value="Register">
+    </form>
+
+</fieldset>
+

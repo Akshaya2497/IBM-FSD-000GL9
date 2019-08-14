@@ -1,0 +1,24 @@
+<input type="button" value="add" (click)=addUser()>
+<table>
+    <thead>
+        <tr>
+            
+            <th>Id</th>
+            <th>Name</th>
+            <th>DOB</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of user">
+            <td>{{e.id}}</td>            
+            <td>{{e.name | uppercase }}</td>
+            <td>{{e.dob}}</td>
+            <input type="button" (click)="deleteUser(e.id)" value="delete">
+        </tr>
+    </tbody>
+</table>
+<br />
+
+<input type="button" (click)="clickMe()" value="show users" />
+

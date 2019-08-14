@@ -35,4 +35,4 @@ class _automoblie <T extends automobiles>{
     }
 }
 const _car = new _automoblie<car>(1,{name: 'car',company:"mercedesBenz",nameofcar: "Benz"});
-console.log(_car.getDetails());
+console.log(_car.getDetails()); 
