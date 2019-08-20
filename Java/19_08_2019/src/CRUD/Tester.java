@@ -23,10 +23,22 @@ public class Tester {
 			choice = scanner.nextInt();
 		
 		switch(choice) {
+		case 0: System.exit(0);
+		break;
 		case 1: service.insertStudent();
 		break;
 		case 2: service.deleteStudent();
 		break;
+		case 3: service.showStudent();
+		break;
+		case 4: service.showpParticularStudent();
+		break;		
+		case 5: service.updateStudent();
+		break;
+		
+		default : System.out.println("You have entered the wrong choice");
+		break;
+		
 		}
 		}while(choice!=0);
 		
