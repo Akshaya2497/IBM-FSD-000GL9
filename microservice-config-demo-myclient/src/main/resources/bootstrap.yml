@@ -1,0 +1,9 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: microservice-config-demo-myclient
+  cloud:
+    config:
+      server:
+        uri: http://localhost:8001
