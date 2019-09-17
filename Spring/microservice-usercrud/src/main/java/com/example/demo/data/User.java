@@ -21,7 +21,7 @@ import lombok.Setter;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int userId;
 	@Column(name = "firstName")
 	private String firstName;
 	@Column(name = "lastName")
@@ -42,11 +42,11 @@ public class User {
 		this.email = email;
 		this.password = password;
 	}
-	public int getId() {
-		return id;
+	public int getUserId() {
+		return userId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int userId) {
+		this.userId = userId;
 	}
 	public String getFirstName() {
 		return firstName;

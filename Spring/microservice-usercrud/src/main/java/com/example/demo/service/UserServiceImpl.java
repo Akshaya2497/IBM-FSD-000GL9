@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
@@ -17,7 +18,7 @@ import com.example.demo.dto.UserDto;
 @Service
 public class UserServiceImpl implements UserService {
 	private Environment env;
-	private UserRepository userRepository;
+	private UserRepository userRepo;
 
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	@Autowired
@@ -25,7 +26,7 @@ public class UserServiceImpl implements UserService {
 			BCryptPasswordEncoder bCryptPasswordEncoder) {
 		super();
 		this.env = env;
-		this.userRepository = userRepository;
+		this.userRepo = userRepository;
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 
@@ -40,12 +41,24 @@ public class UserServiceImpl implements UserService {
 		
 		User user=mapper.map(userDetail, User.class);
 		user.setPassword(userDetail.getBcrypetedPassword());
-		userRepository.save(user);
+		userRepo.save(user);
 		UserDto uDto=mapper.map(user, UserDto.class);
 		
 		return uDto;
 	}
+	@Override
+	public List<User> getAllUsers() {
+	
+		return (List<User>) userRepo.findAll();
+	}
 
+	@Override
+	public List<User> findById(String id) {
+		return userRepo.findAllById(id);
+		
+	}
+	
+	
 
 
 }
