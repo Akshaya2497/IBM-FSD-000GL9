@@ -60,6 +60,11 @@ public class UserController {
 	@GetMapping("/users/{id}")
 	public ResponseEntity<CreateUserResponseModel> findUser(@PathVariable String id){
 		List<User> user =  service.findById(id);
+		ModelMapper mapper = new ModelMapper();
+		CreateUserResponseModel res = mapper.map(user, CreateUserResponseModel.class);
+		return ResponseEntity.status(HttpStatus.CREATED).body(res);
+		
+		
 		
 	}
 
