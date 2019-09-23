@@ -1,0 +1,26 @@
+<div class="col-md-6">
+<h2> User Details</h2>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th class="hidden">Id</th>
+    <th>associateFirstName</th>
+    <th>associateLastName</th>
+    <th>emailId</th>
+    <th>mobileNumber</th>
+    
+  </tr>
+ </thead>
+<tbody>
+  <tr *ngFor="let employee of employees">
+    <td class="hidden"></td>
+    <td>{{employee.associateFirstName}}</td>
+    <td>{{employee.associateLastName}}</td>
+    <td>{{employee.emailId}}</td>
+    <td>{{employee.mobileNumber}}</td>
+    <td><button class="btn btn-danger" (click)="deleteUser(employee)"> Delete Employee</button></td>
+  </tr>
+  </tbody>
+</table>
+</div>
