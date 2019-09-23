@@ -15,6 +15,6 @@ public interface EmployeeRepo extends CrudRepository<Employee, Long> {
 	public List<Employee> findByAssociateLastName(String lname);	
 	public List<Employee> findByEmailId(String email);
 	public Employee findByMobileNumber(long number);
-	public List<Employee> findBySkill(String skill);	
+		
 	
 }

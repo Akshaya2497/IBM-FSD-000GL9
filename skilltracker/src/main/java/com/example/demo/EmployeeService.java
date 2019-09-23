@@ -58,16 +58,16 @@ public class EmployeeService {
 	}
 
 	
-	public List<EmployeeDto> listAllEmployee() {
+	public Iterable<Employee> listAllEmployee() {
 		ModelMapper mapper = new ModelMapper();
 		
-		List<Employee> employee=(List<Employee>) repo.findAll();
+		Iterable<Employee> employee=repo.findAll();
 		List<EmployeeDto> emps=new ArrayList<EmployeeDto>();
 		for(EmployeeDto e:emps) {
 			EmployeeDto dto=mapper.map(e,EmployeeDto.class);
                  emps.add(dto);
 		}
-		return emps;
+		return employee;
 
 	}
 	
@@ -144,7 +144,7 @@ public class EmployeeService {
 	
 	
 	
-	public List<EmployeeDto> deleteById(long id) {
+	public Iterable<Employee> deleteById(long id) {
 		// TODO Auto-generated method stub
 		Optional<Employee> employee=repo.findById(id);
 		Employee temp=employee.get();
@@ -152,6 +152,8 @@ public class EmployeeService {
 		return  listAllEmployee();
 	}
 
+
+	
 
 	
 	

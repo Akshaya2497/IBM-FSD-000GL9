@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,13 +27,15 @@ import com.example.demo.entity.Skill;
 import com.example.demo.model.RequestModel;
 import com.example.demo.model.ResponseModel;
 
-@Controller
 
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@RestController
+@RequestMapping({"/api"})
 public class EmployeeController {
 	@Autowired
 	EmployeeService service;
 	
-	@PostMapping("/")
+	@PostMapping
 	public ResponseEntity<ResponseModel> createUser(@RequestBody RequestModel employee) {
 		ModelMapper mapper = new ModelMapper();
 		mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
@@ -45,7 +48,7 @@ public class EmployeeController {
 		return new ResponseEntity<ResponseModel>(model, HttpStatus.CREATED);
 
 	}
-	@PostMapping("/firstname/{firstname}")
+	@GetMapping("path = {\"/{firstname}\"}")
 	public List<ResponseModel> findAssociateDetailByFirstName(@PathVariable("firstname") String fname) {
 		ModelMapper mapper = new ModelMapper();
 		mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
@@ -58,6 +61,15 @@ public class EmployeeController {
 		}
 		return model;
 
+	}
+	@GetMapping
+	public Iterable<Employee> findAssociateDetail() {
+		ModelMapper mapper = new ModelMapper();
+		mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+         
+	Iterable<Employee> dto=service.listAllEmployee();
+		ResponseModel model = mapper.map(dto, ResponseModel.class);
+   return dto;
 	}
 //	@GetMapping("/lastname/{lastname}")
 //	public List<CreateUserResponseModel> findAssociateDetailByLastName(@PathVariable("lastname") String lname) {

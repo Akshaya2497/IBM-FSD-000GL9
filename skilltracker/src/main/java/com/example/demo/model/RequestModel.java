@@ -31,23 +31,19 @@ public class RequestModel {
 
 	private long mobileNumber;
 	
-	@OneToMany (mappedBy = "employee", cascade = CascadeType.ALL)
-	private Set<Skill> skill;
-
 	public RequestModel() {
 		super();
 	}    
 
 	
 
-	public RequestModel(String associateFirstName, String associateLastName, @Email String emailId, long mobileNumber,
-			Set<Skill> skill) {
+	public RequestModel(String associateFirstName, String associateLastName, @Email String emailId, long mobileNumber) {
 		super();
 		this.associateFirstName = associateFirstName;
 		this.associateLastName = associateLastName;
 		this.emailId = emailId;
 		this.mobileNumber = mobileNumber;
-		this.skill = skill;
+		
 	}
 
 
@@ -95,19 +91,6 @@ public class RequestModel {
 	}
 
 
-
-	public Set<Skill> getSkill() {
-		return skill;
-	}
-
-
-
-	public void setSkill(Set<Skill> skill) {
-		this.skill = skill;
-	}
-
-	
-	
 	
 	
 }
