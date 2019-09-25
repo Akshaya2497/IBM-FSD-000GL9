@@ -1,12 +1,31 @@
-<div class="container-fluid">
-<div class="col-md-offset-1">
-  <h1>
-    Welcome to !
-  </h1>
-</div>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- <link href="app.component.css" type="text/css" rel="stylesheet">  -->
+ 
+  </head>
+  <body>  
+      <div class="container-fluid">
+    <h1>
+      Admin Page !
+    </h1>
+    <a routerLink="/employees"> List Employees</a>
+    <a routerLink="/add">Add Employee</a>   
+      
+      
 
-<a routerLink="/employees"> List Employees</a>
-<a style="margin-left:10px" routerLink="/add">Add Employee</a>
-<br/>
-<router-outlet></router-outlet>
+    <br/>
+  <div class="cntr">
+    <div class="cntr-innr">
+      <label class="search" for="inpt_search">
+        <input id="inpt_search" type="text" />
+      </label>
+      <p>Hover to search.</p>
+    </div> 
+  </div>
+
+  
+  <router-outlet></router-outlet>
 </div>
+</body>
+</html>

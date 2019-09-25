@@ -1,26 +1,69 @@
-<div class="col-md-6">
+<!-- <div class="col-md-6">
   <h2 class="text-center">Add User</h2>
-<form>
-  
+  <form class="example-form">
+        <mat-form-field class="example-full-width">        
+          <input type="text" [(ngModel)]="emp.associateFirstName" name="associateFirstName" placeholder='Type your First name' id="associateFirstName" required>
+          
+        </mat-form-field> 
+        
+        <mat-form-field class="example-full-width">
+          <input type="text" [(ngModel)]="emp.associateLastName"  name="associateLastName" placeholder="Last name" id="associateLastName" required='true'>
+          
+        </mat-form-field>
 
-  <div class="form-group">
-    <label for="firstName">First Name:</label>
-    <input [(ngModel)]="emp.associateFirstName" placeholder="First Name" name="associateFirstName" class="form-control" id="associateFirstName">
-  </div>
-
-  <div class="form-group">
-    <label for="lastName">Last Name:</label>
-   <input [(ngModel)]="emp.associateLastName" placeholder="Last name" name="associateLastName" class="form-control" id="associateLastName">
-  </div>
-<div class="form-group">
-    <label for="email">Email address:</label>
-    <input type="email" [(ngModel)]="emp.emailId" placeholder="Email" name="emailId" class="form-control" id="emailId">
-  </div>
-  <div class="form-group">
-    <label for="mobilenumber">Mobile Number:</label>
-    <input type="email" [(ngModel)]="emp.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-control" id="mobileNumber">
-  </div>
-  
+        <mat-form-field  class="example-full-width">
+            <input matInput placeholder="Enter your email" [formControl]="email" [(ngModel)]="emp.emailId"  required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+   
+    
+    
+    
+    <input type="number" [(ngModel)]="emp.mobileNumber"  name="mobileNumber" placeholder="Mobile Number" id="mobileNumber" required=''>
+    
+    <br/> 
   <button class="btn btn-success" (click)="createEmployee()">Create</button>
 </form>
-</div>
+</div> -->
+
+
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+              <h3>Angular 6 Template-Driven Form Validation</h3>
+              <form name="form" (ngSubmit)="f.form.valid  && createEmployee()" #f="ngForm" novalidate>
+                  <div class="form-group">
+                      <label for="firstName">First Name</label>
+                      <input type="text" class="form-control"  [(ngModel)]=" model.firstName" name="associateFirstName" #associateFirstName="ngModel"[ngClass]="{ 'is-invalid': f.submitted && associateFirstName.invalid }" required />
+                      <div *ngIf="f.submitted && associateFirstName.invalid" class="invalid-feedback">
+                          <div *ngIf="associateFirstName.errors.required">First Name is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="lastName">Last Name</label>
+                      <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
+                      <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+                          <div *ngIf="lastName.errors.required">Last Name is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
+                      <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                          <div *ngIf="email.errors.required">Email is required</div>
+                          <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
+                      <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                          <div *ngIf="password.errors.required">Password is required</div>
+                          <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <button class="btn btn-primary">Register</button>
+                  </div>
+       
