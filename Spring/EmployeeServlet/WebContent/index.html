@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-2.0.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+</head>
+<body>
+<h1>Add Employee</h1>
+<form name="addemp" id="form-1" action="add_emp.do" method="post">
+	<input name="name"  value="" placeholder="Type your name" maxlength="15" type="text"/>
+	<input name="password"  value="" placeholder="Type your password"  type="password"/>
+	<input type="email" name="email" placeholder="Type your email"> 
+	<select name="country">
+		<option value="Unknown">Unknown</option>
+		<option value="India">India</option>
+		<option value="UK">UK</option>
+	</select>
+	<input type="submit" value="save">
+		
+</form>
+<a href="view_emp.do">View Employee</a>
+</body>
+</html>

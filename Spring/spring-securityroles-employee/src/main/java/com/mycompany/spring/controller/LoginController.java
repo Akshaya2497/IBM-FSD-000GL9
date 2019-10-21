@@ -1,0 +1,27 @@
+package com.mycompany.spring.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+
+public class LoginController {
+	@GetMapping("/showMyLoginPage")
+	public String showMyLoginPage() {
+		
+		// return "plain-login";
+
+		return "fancy-login";
+		
+	}
+	@GetMapping("/admin")
+	public String adminPage() {
+		return "admin";
+	}
+	@GetMapping("/users")
+	public String userPage() {
+		return "users";
+	}
+
+}
